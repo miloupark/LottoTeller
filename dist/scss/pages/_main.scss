@@ -1,20 +1,37 @@
 @use "../mixin/a11y-hidden" as *;
 
 .lotto {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
   align-items: center;
-  gap: 20px;
+  gap: 40px;
   padding: 40px;
   &__title {
-    @include a11y-hidden;
+    grid-column: 1 / -1;
+    font-size: 40px;
   }
   &__view {
-    width: 50%;
-    text-align: center;
+    display: flex;
+    gap: 8px;
+    > li {
+      display: grid;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background-color: black;
+      border-radius: 50%;
+      > span {
+        font-size: 24px;
+        color: white;
+      }
+    }
+
+    grid-column: 1 / 2;
     font-size: 20px;
   }
   &__button {
+    grid-column: 2 / 2;
     font-size: 20px;
     font-weight: bold;
     color: #61ffcb;
