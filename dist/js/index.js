@@ -17,6 +17,8 @@ randomButton.addEventListener("click", () => {
   }
 
   viewNumber.forEach((element, index) => {
-    element.textContent = targetNumber[index];
+    setTimeout(() => {
+      element.textContent = targetNumber[index];
+    }, index * 500);
   });
 });
