@@ -1,4 +1,4 @@
-const randomButton = document.querySelector(".lotto__button");
+const randomButton = document.querySelector(".lotto-view__button");
 const viewNumber = document.querySelectorAll(".lotto-number");
 const minNumber = 1; // 로또 최소 숫자
 const maxNumber = 45; // 로또 최대 숫자
@@ -31,6 +31,8 @@ randomButton.addEventListener("click", () => {
       // 마지막 번호 생성 후 버튼 활성화
       if (index === 5) {
         randomButton.disabled = false;
+
+        const numberStorage = document.querySelectorAll(".lotto-result");
       }
     }, index * 500);
   });
