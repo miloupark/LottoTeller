@@ -1,9 +1,9 @@
 const minNumber = 1; // 로또 최소 숫자
 const maxNumber = 45; // 로또 최대 숫자
 const randomButton = document.querySelector(".lotto-view__button");
-const lottoGroup = document.querySelector(".lotto-view__group"); // 6개의 조 이름
-let group = ["E", "D", "C", "B", "A"]; // 로또 A, B, C, D, E조
-const targetNumberList = document.querySelector(".lotto-view__list"); // 6개의 정수 리스트
+const lottoGrouptitle = document.querySelector(".lotto-view__group"); // 6개의 조 이름
+let lottoGroup = ["E", "D", "C", "B", "A"]; // 로또 A, B, C, D, E조
+const targetNumberlist = document.querySelector(".lotto-view__list"); // 6개의 정수 리스트
 const targetNumber = []; // 1이상 45이하의 중복되지 않는 6개의 숫자
 
 // 로또 공 자식 요소 추가
@@ -12,15 +12,15 @@ const createLottoball = (number) => {
   element.textContent = number;
   element.className = "lotto-ball";
   element.style.color = "white";
-  targetNumberList.appendChild(element);
+  targetNumberlist.appendChild(element);
   return element;
 };
 
 // 로또 조 자식 요소 추가
-const createLottogroup = (text) => {
+const createlottoGrouptitle = (text) => {
   const element = document.createElement("span");
   element.textContent = text;
-  lottoGroup.appendChild(element);
+  lottoGrouptitle.appendChild(element);
 
   return element;
 };
@@ -39,12 +39,13 @@ randomButton.addEventListener("click", () => {
   randomButton.disabled = true;
 
   // 버튼 재클릭 시 기존 조, 번호 초기화
-  lottoGroup.innerHTML = "";
-  targetNumberList.innerHTML = "";
+  lottoGrouptitle.innerHTML = "";
+  targetNumberlist.innerHTML = "";
+  targetNumber.length = 0;
 
   // 로또 조 초기화
-  if (!group.length) {
-    group = ["E", "D", "C", "B", "A"];
+  if (!lottoGroup.length) {
+    lottoGroup = ["E", "D", "C", "B", "A"];
   }
 
   // 중복되지 않는 번호 6개 생성
@@ -66,6 +67,6 @@ randomButton.addEventListener("click", () => {
     }, index * 500);
   });
 
-  const currentGroup = group.pop();
-  createLottogroup(currentGroup);
+  const currentGroup = lottoGroup.pop();
+  createlottoGrouptitle(currentGroup);
 });
