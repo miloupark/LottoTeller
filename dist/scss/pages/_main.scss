@@ -12,18 +12,20 @@
   font-size: 40px;
 }
 .lotto-view {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   justify-content: center;
   align-items: center;
   gap: 20px;
   &__group {
+    height: 50px;
     font-size: 40px;
     font-weight: bold;
   }
   &__list {
     display: flex;
-    width: 40%;
-    justify-content: flex-start;
+    height: 50px;
+    justify-content: center;
     font-size: 20px;
     gap: 8px;
     > li {
@@ -36,6 +38,7 @@
     }
   }
   &__button {
+    grid-column: 1 / -1;
     font-size: 20px;
     font-weight: bold;
     color: #61ffcb;
