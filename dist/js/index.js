@@ -84,6 +84,8 @@ randomButton.addEventListener("click", () => {
       createLottoball(number);
       // 마지막 번호 생성 후 버튼 활성화
       if (index === 5) {
+        // 생성된 랜덤 번호 하단 리스트 항목으로 저장
+        resultRandomnumber(currentGroup, targetNumber);
         randomButton.disabled = false;
       }
     }, index * 500);
@@ -91,7 +93,4 @@ randomButton.addEventListener("click", () => {
 
   const currentGroup = lottoGroup.pop();
   createlottoGrouptitle(currentGroup);
-
-  // 생성된 랜덤 번호 하단 리스트 항목으로 저장
-  resultRandomnumber(currentGroup, targetNumber);
 });
