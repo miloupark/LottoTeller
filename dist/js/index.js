@@ -78,6 +78,9 @@ randomButton.addEventListener("click", () => {
     }
   }
 
+  // 랜덤 번호 오름차순 정렬
+  targetNumber.sort((a, b) => a - b);
+
   // 6개의 번호 시간 차 생성
   targetNumber.forEach((number, index) => {
     setTimeout(() => {
