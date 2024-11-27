@@ -66,12 +66,17 @@ body {
     color: $primary-brown;
     background-color: $primary-gray;
     padding: 6px 8px;
+    transition: background-color 0.3s;
     &:hover {
       background-color: $primary-red;
+    }
+    &:active {
+      color: $primary-gray;
     }
   }
 }
 .lotto-storage {
+  position: relative;
   display: none;
   width: 680px;
   height: 407px;
@@ -79,7 +84,57 @@ body {
   margin: 0 auto;
   background-color: $primary-gray;
   &__title {
+    font-size: 24px;
     padding-block: 12px;
     font-family: "Copperplate", sans-serif;
+  }
+  &__subtitle {
+    padding-block: 12px;
+    font-weight: 300;
+    font-family: "Copperplate", sans-serif;
+    border-top: 2px dotted $black;
+    border-bottom: 2px dotted $black;
+  }
+  &__record {
+    display: flex;
+    gap: 8px;
+    padding-block: 20px;
+    > li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 40px;
+      background-color: $white;
+      border: 1px solid $black;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      &:hover {
+        color: $white;
+        background-color: $black;
+      }
+      &:active {
+        color: black;
+        background-color: $primary-yellow;
+      }
+    }
+  }
+  &__list {
+    padding: 24px;
+  }
+  &__papertop {
+    position: absolute;
+    content: url(/dist/images/paper.svg);
+    top: -8.5px;
+    right: 0;
+    left: 0;
+  }
+  &__paperbottom {
+    position: absolute;
+    content: url(/dist/images/paper.svg);
+    bottom: -8.5px;
+    right: 0;
+    left: 0;
   }
 }
