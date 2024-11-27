@@ -6,13 +6,13 @@ let lottoGroup = ["E", "D", "C", "B", "A"]; // 로또 A, B, C, D, E조
 const targetNumberlist = document.querySelector(".lotto-view__list"); // 6개의 정수 리스트
 const targetNumber = []; // 1이상 45이하의 중복되지 않는 6개의 숫자
 const numberResult = document.querySelector(".lotto-storage__list"); // 로또 번호 결과
+const numberStorage = document.querySelector(".lotto-storage");
 
 // 로또 공 자식 요소 추가
 const createLottoball = (number) => {
   const element = document.createElement("li");
   element.textContent = number;
   element.className = "lotto-ball";
-  element.style.color = "white";
   targetNumberlist.appendChild(element);
 
   return element;
@@ -90,6 +90,7 @@ randomButton.addEventListener("click", () => {
         // 생성된 랜덤 번호 하단 리스트 항목으로 저장
         resultRandomnumber(currentGroup, targetNumber);
         randomButton.disabled = false;
+        numberStorage.style.display = "block";
       }
     }, index * 500);
   });

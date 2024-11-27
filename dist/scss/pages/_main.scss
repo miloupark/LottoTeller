@@ -1,4 +1,12 @@
 @use "../mixin/a11y-hidden" as *;
+@use "../reset/abstracts" as *;
+@use "../reset/fonts" as *;
+@import url("https://fonts.cdnfonts.com/css/copperplate");
+
+body {
+  font-family: "Pretendard";
+  background-color: $primary-brown;
+}
 
 .lotto {
   display: grid;
@@ -9,41 +17,69 @@
   padding: 40px;
 }
 .lotto-title {
-  font-size: 40px;
+  @include a11y-hidden;
 }
 .lotto-view {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: repeat(3, auto);
   justify-content: center;
   align-items: center;
-  gap: 20px;
   &__group {
-    height: 50px;
-    font-size: 40px;
-    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 84px;
+    height: 116px;
+    font-size: 96px;
+    line-height: 116px;
+    font-weight: 600;
+    color: $primary-brown;
+    background-color: $primary-yellow;
   }
   &__list {
     display: flex;
-    height: 50px;
+    align-items: center;
+    width: 496px;
+    height: 116px;
     justify-content: center;
     font-size: 20px;
-    gap: 8px;
+    padding: 0 8px;
+    background-color: $primary-blue;
     > li {
       display: grid;
       align-items: center;
-      width: 50px;
-      height: 50px;
-      background-color: black;
+      width: 80px;
+      height: 80px;
+      font-size: 48px;
+      font-weight: 700;
+      color: $primary-brown;
+      background-color: $white;
+      border: 1px solid $primary-brown;
       border-radius: 50%;
     }
   }
   &__button {
-    grid-column: 1 / -1;
-    font-size: 20px;
-    font-weight: bold;
-    color: #61ffcb;
-    background-color: rgb(86, 42, 11);
-    padding: 16px;
-    border-radius: 8px;
+    text-align: left;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 52px;
+    color: $primary-brown;
+    background-color: $primary-gray;
+    padding: 6px 8px;
+    &:hover {
+      background-color: $primary-red;
+    }
+  }
+}
+.lotto-storage {
+  display: none;
+  width: 680px;
+  height: 407px;
+  padding: 32px 8px;
+  margin: 0 auto;
+  background-color: $primary-gray;
+  &__title {
+    padding-block: 12px;
+    font-family: "Copperplate", sans-serif;
   }
 }
