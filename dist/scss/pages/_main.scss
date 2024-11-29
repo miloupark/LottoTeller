@@ -21,9 +21,9 @@ body {
 }
 .lotto-view {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
   justify-content: center;
-  align-items: center;
+  align-items: end;
   &__group {
     display: flex;
     justify-content: center;
@@ -60,6 +60,22 @@ body {
     }
   }
   &__button {
+    text-align: left;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 52px;
+    color: $primary-brown;
+    background-color: $primary-gray;
+    padding: 6px 8px;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: $primary-red;
+    }
+    &:active {
+      color: $primary-gray;
+    }
+  }
+  &__buttonfivegroup {
     text-align: left;
     font-size: 40px;
     font-weight: 700;

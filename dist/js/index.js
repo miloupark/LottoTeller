@@ -1,6 +1,7 @@
 const minNumber = 1; // 로또 최소 숫자
 const maxNumber = 45; // 로또 최대 숫자
-const randomButton = document.querySelector(".lotto-view__button");
+const randomButton = document.querySelector(".lotto-view__button"); // 로또 생성 버튼
+const randomQuickbutton = document.querySelector(".lotto-view__buttonfivegroup"); // 로또 5천원 생성 버튼
 const lottoGrouptitle = document.querySelector(".lotto-view__group"); // 6개의 조 이름
 let lottoGroup = ["E", "D", "C", "B", "A"]; // 로또 A, B, C, D, E조
 const targetNumberlist = document.querySelector(".lotto-view__list"); // 6개의 정수 리스트
@@ -49,7 +50,6 @@ const resultRandomnumber = (group, numbers) => {
   const saveNumbers = document.createElement("span");
   saveNumbers.textContent = numbers.join(", ");
   element.appendChild(saveNumbers);
-
   numberResult.appendChild(element);
 
   return element;
@@ -59,6 +59,7 @@ const resultRandomnumber = (group, numbers) => {
 randomButton.addEventListener("click", () => {
   // 버튼 클릭 후 6개의 번호 생성되는 동안 버튼 비활성화
   randomButton.disabled = true;
+  randomQuickbutton.disabled = true;
 
   // 버튼 재클릭 시 기존 조, 번호 초기화
   lottoGrouptitle.innerHTML = "";
@@ -97,4 +98,45 @@ randomButton.addEventListener("click", () => {
 
   const currentGroup = lottoGroup.pop();
   createlottoGrouptitle(currentGroup);
+});
+
+// 빠른 로또 번호 생성 버튼 클릭 이벤트
+randomQuickbutton.addEventListener("click", () => {
+  // 버튼 클릭 비활성화
+  randomButton.disabled = true;
+  randomQuickbutton.disabled = true;
+
+  // 버튼 재클릭 시 번호 초기화
+  lottoGrouptitle.innerHTML = "";
+  targetNumberlist.innerHTML = "";
+
+  // 로또 조 초기화
+  const lottoGroup = ["A", "B", "C", "D", "E"];
+
+  // 각 조의 6개의 번호 생성
+  lottoGroup.forEach((group, groupIndex) => {
+    const groupNumber = [];
+    while (groupNumber.length < 6) {
+      const number = getLottoNumber();
+      if (!groupNumber.includes(number)) {
+        groupNumber.push(number);
+      }
+    }
+
+    // 랜덤 번호 오름차순 정렬
+    groupNumber.sort((a, b) => a - b);
+
+    // 각 그룹 시간 차 생성
+    setTimeout(() => {
+      resultRandomnumber(group, groupNumber);
+
+      // 마지막 번호 생성 후 버튼 활성화
+      if (groupIndex === lottoGroup.length - 1) {
+        // 생성된 랜덤 번호 하단 리스트 항목으로 저장
+        randomButton.disabled = false;
+        randomQuickbutton.disabled = false;
+        numberStorage.style.display = "block";
+      }
+    }, groupIndex * 1);
+  });
 });
