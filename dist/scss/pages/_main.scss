@@ -39,23 +39,24 @@ body {
   &__list {
     display: flex;
     align-items: center;
-    width: 496px;
-    height: 116px;
+    min-width: 496px;
+    max-height: 116px;
     justify-content: center;
+    gap: 8px;
     font-size: 20px;
-    padding: 0 8px;
+    padding: 22px 8px;
     background-color: $primary-blue;
     > li {
       display: grid;
       align-items: center;
-      width: 80px;
-      height: 80px;
-      font-size: 48px;
+      width: 72px;
+      height: 72px;
+      font-size: 40px;
       font-weight: 700;
       color: $primary-brown;
       background-color: $white;
       border: 1px solid $primary-brown;
-      border-radius: 50%;
+      border-radius: 1000px;
     }
   }
   &__button {
@@ -125,14 +126,14 @@ body {
   }
   &__papertop {
     position: absolute;
-    content: url(/dist/images/paper.svg);
+    content: url(../../images/paper.svg);
     top: -8.5px;
     right: 0;
     left: 0;
   }
   &__paperbottom {
     position: absolute;
-    content: url(/dist/images/paper.svg);
+    content: url(../../images/paper.svg);
     bottom: -8.5px;
     right: 0;
     left: 0;
